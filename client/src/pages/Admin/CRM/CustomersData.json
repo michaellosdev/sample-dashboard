@@ -1,0 +1,222 @@
+{
+    "customers" : [
+        {
+            "id":"1",
+            "name": "John Doe",
+            "company": "best solutions inc",
+            "personalPhone": "818-222-1334",
+            "email":"johndoe@bestsolutions.com",
+            "contactPhone":"818-321-4355",
+            "address": 
+                {
+                    "state":"CA",
+                    "city":"Santa Clarita",
+                    "street": "123 silent road",
+                    "unit":"203",
+                    "zip":"91222"
+
+                },
+            "role":"manager",
+            "notes":"lorem ipsum blah blah",
+            "flagged": false,
+            "representatives" : [
+                {
+                    "name":"Andro Doe",
+                    "email":"androdoe@bestsolutions.com",
+                    "contactPhone":"777-421-1355",
+                    "role":"office manager",
+                    "notes":""
+                },
+
+                {
+                    "name":"Winni Markus",
+                    "email":"winnimarkus@bestsolutions.com",
+                    "contactPhone":"477-211-7455",
+                    "role":"office manager",
+                    "notes":""
+                }
+            ]
+
+        },
+
+        {
+            "id":"2",
+            "name": "John Doe",
+            "company": "best solutions inc",
+            "personalPhone": "818-222-1334",
+            "email":"johndoe@bestsolutions.com",
+            "contactPhone":"818-321-4355",
+            "address":
+                {
+                    "state":"CA",
+                    "city":"Santa Clarita",
+                    "street": "123 silent road",
+                    "unit":"203",
+                    "zip":"91222"
+
+                },
+            "role":"manager",
+            "notes":"",
+            "flagged": false,
+            "representatives" : [
+                {
+                    "name":"Andro Doe",
+                    "email":"androdoe@bestsolutions.com",
+                    "contactPhone":"777-421-1355",
+                    "role":"office manager",
+                    "notes":""
+                },
+
+                {
+                    "name":"Winni Markus",
+                    "email":"winnimarkus@bestsolutions.com",
+                    "contactPhone":"477-211-7455",
+                    "role":"office manager",
+                    "notes":""
+                }
+            ]
+
+        },
+
+        {
+            "id":"3",
+            "name": "John Doe",
+            "company": "best solutions inc",
+            "personalPhone": "818-222-1334",
+            "email":"johndoe@bestsolutions.com",
+            "contactPhone":"818-321-4355",
+            "address":
+                {
+                    "state":"CA",
+                    "city":"Santa Clarita",
+                    "street": "123 silent road",
+                    "unit":"203",
+                    "zip":"91222"
+
+                },
+            "role":"manager",
+            "notes":"",
+            "flagged": true,
+            "representatives" : [
+                {
+                    "name":"Andro Doe",
+                    "email":"androdoe@bestsolutions.com",
+                    "contactPhone":"777-421-1355",
+                    "role":"office manager",
+                    "notes":""
+                },
+
+                {
+                    "name":"Winni Markus",
+                    "email":"winnimarkus@bestsolutions.com",
+                    "contactPhone":"477-211-7455",
+                    "role":"office manager",
+                    "notes":""
+                }
+            ]
+
+        },
+
+        {
+            "id":"4",
+            "name": "John Doe",
+            "company": "best solutions inc",
+            "personalPhone": "818-222-1334",
+            "email":"johndoe@bestsolutions.com",
+            "contactPhone":"818-321-4355",
+            "address":
+                {
+                    "state":"CA",
+                    "city":"Santa Clarita",
+                    "street": "123 silent road",
+                    "unit":"203",
+                    "zip":"91222"
+
+                },
+            "role":"manager",
+            "notes":"",
+            "flagged": false,
+            "representatives" : [
+                {
+                    "name":"Andro Doe",
+                    "email":"androdoe@bestsolutions.com",
+                    "contactPhone":"777-421-1355",
+                    "role":"office manager",
+                    "notes":""
+                },
+
+                {
+                    "name":"Winni Markus",
+                    "email":"winnimarkus@bestsolutions.com",
+                    "contactPhone":"477-211-7455",
+                    "role":"office manager",
+                    "notes":""
+                }
+            ]
+
+        },
+
+        {
+            "id":"5",
+            "name": "John Doe",
+            "company": "best solutions inc",
+            "personalPhone": "818-222-1334",
+            "email":"johndoe@bestsolutions.com",
+            "contactPhone":"818-321-4355",
+            "address": 
+                {
+                    "state":"CA",
+                    "city":"Santa Clarita",
+                    "street": "123 silent road",
+                    "unit":"203",
+                    "zip":"91222"
+
+                },
+            "role":"manager",
+            "notes":"",
+            "flagged": true,
+            "representatives" : [
+                {
+                    "name":"Andro Doe",
+                    "email":"androdoe@bestsolutions.com",
+                    "contactPhone":"777-421-1355",
+                    "role":"office manager",
+                    "notes":""
+                }
+            ]
+
+        },
+
+        {
+            "id":"5",
+            "name": "John Doe",
+            "company": "best solutions inc",
+            "personalPhone": "818-222-1334",
+            "email":"johndoe@bestsolutions.com",
+            "contactPhone":"818-321-4355",
+            "address": 
+                {
+                    "state":"CA",
+                    "city":"Santa Clarita",
+                    "street": "123 silent road",
+                    "unit":"203",
+                    "zip":"91222"
+
+                },
+            "role":"manager",
+            "notes":"",
+            "flagged": true,
+            "representatives" : [
+                {
+                    "name":"Andro Doe",
+                    "email":"androdoe@bestsolutions.com",
+                    "contactPhone":"777-421-1355",
+                    "role":"office manager",
+                    "notes":""
+                }
+            ]
+
+        }
+
+    ]
+}

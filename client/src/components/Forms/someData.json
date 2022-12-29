@@ -1,0 +1,15 @@
+{
+    "customers":[
+        {
+            "id":0,
+            "name": "John Doe",
+            "address": "125 Vevevo Rd"
+        },
+        {
+            "id":1,
+            "name": "Andro Vega",
+            "address": "12221 wowow Rd"
+        }
+
+    ]
+}
