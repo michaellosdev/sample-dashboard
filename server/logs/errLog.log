@@ -18788,3 +18788,12 @@ Use mongoose.model(name, schema)	GET	/jobs	undefined
 20221228	11:16:51	6e27fb4e-1f27-4426-b0b4-cd68102e8e7a	TypeError	Cannot read properties of undefined (reading 'split')	POST	/employees/logout	undefined
 20221229	14:46:20	f91ed672-6523-46f9-8e79-99d0a7ab891b	TypeError	Cannot read properties of undefined (reading 'split')	POST	/employees/logout	undefined
 20221229	15:03:22	7a4aee37-06e9-49f9-ba3c-ef241f7604f9	TypeError	Cannot read properties of undefined (reading 'split')	POST	/employees/logout	undefined
+20221229	18:35:29	7ff15fb8-36be-4dc0-a388-dafad8af2b66	Error	Not allowed by CORS	POST	/employees/login	undefined
+20221229	18:35:31	c5f9ef21-8a62-4ba9-a87a-b653aa71ddc0	Error	Not allowed by CORS	POST	/employees/login	undefined
+20221229	18:35:31	6306e912-e37d-449a-9ea4-6ab4150932f4	Error	Not allowed by CORS	POST	/employees/login	undefined
+20221229	18:35:40	01bbb7b9-e41d-4186-bf00-b8d855c2e0c5	Error	Not allowed by CORS	POST	/employees/login	undefined
+20221229	18:35:40	0d7062f6-0306-4580-a3b0-a648372fb7a1	Error	Not allowed by CORS	POST	/employees/login	undefined
+20221229	18:35:40	600931df-f815-4721-854d-6ce95f6f3af9	Error	Not allowed by CORS	POST	/employees/login	undefined
+20221229	18:35:40	d8f86c09-6d7c-4771-98c3-20261df1de55	Error	Not allowed by CORS	POST	/employees/login	undefined
+20221229	18:35:41	8e3589b4-d12f-4ce9-918d-451dd98cd1ef	Error	Not allowed by CORS	POST	/employees/login	undefined
+20221229	18:35:41	a3005f08-4886-4b0e-b5af-1ed48782f632	Error	Not allowed by CORS	POST	/employees/login	undefined

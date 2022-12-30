@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "./static/css/main.563e9c08.css",
+    "main.js": "./static/js/main.38181a16.js",
+    "static/media/bg.png": "./static/media/bg.b3aab60ea100712b9119.png",
+    "static/media/onboardittech_logo.png": "./static/media/onboardittech_logo.891665a0c66c4f706246.png",
+    "index.html": "./index.html",
+    "main.563e9c08.css.map": "./static/css/main.563e9c08.css.map",
+    "main.38181a16.js.map": "./static/js/main.38181a16.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.563e9c08.css",
+    "static/js/main.38181a16.js"
+  ]
+}
