@@ -18797,3 +18797,11 @@ Use mongoose.model(name, schema)	GET	/jobs	undefined
 20221229	18:35:40	d8f86c09-6d7c-4771-98c3-20261df1de55	Error	Not allowed by CORS	POST	/employees/login	undefined
 20221229	18:35:41	8e3589b4-d12f-4ce9-918d-451dd98cd1ef	Error	Not allowed by CORS	POST	/employees/login	undefined
 20221229	18:35:41	a3005f08-4886-4b0e-b5af-1ed48782f632	Error	Not allowed by CORS	POST	/employees/login	undefined
+20221230	12:15:05	109c6260-0f89-44d3-9418-35c792bf7359	Error	Not allowed by CORS	OPTIONS	/employees/login	undefined
+20221230	12:16:02	32a14f51-11c2-4847-ab46-19060a85559a	Error	Not allowed by CORS	OPTIONS	/employees/login	undefined
+20221230	12:17:04	791ebf40-2d98-4575-8112-a7d011127b38	Error	Not allowed by CORS	OPTIONS	/employees/login	undefined
+20221230	12:19:17	b0e6b5a8-a5bc-4d37-9872-31eb8971204c	Error	Not allowed by CORS	OPTIONS	/employees/login	undefined
+20221230	12:19:19	7bc32762-6156-4701-b5e7-2890448891df	Error	Not allowed by CORS	OPTIONS	/employees/login	undefined
+20221230	12:19:20	9bafd06e-3eb5-4b43-9968-5be010863719	Error	Not allowed by CORS	OPTIONS	/employees/login	undefined
+20221230	12:19:20	68e44b79-a55a-47a4-9b56-222b972a5af7	Error	Not allowed by CORS	OPTIONS	/employees/login	undefined
+20221230	12:19:29	3c79cb4b-ac39-4b88-bbab-308fbbf9034b	Error	Not allowed by CORS	OPTIONS	/employees/login	undefined
