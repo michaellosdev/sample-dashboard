@@ -35,7 +35,11 @@ function CalendarPageCustomer() {
 
   const fetchJobs = async() => {
       const {data} = await axios.get(`http://localhost:6001/myJobs`, {withCredentials: true})
-      setJobs(data)
+      if (data.lenth) {
+        setJobs(data)
+      } else {
+        setJobs([])
+      }
       setEvent(data)
   }
 
@@ -43,9 +47,10 @@ function CalendarPageCustomer() {
     fetchJobs()
   }, [])
 
+let newarr =[]
 
 
-  const newarr = jobs.map(item => {
+newarr = jobs.map(item => {
 
     let startYear = new Date(item.startJobDate).getFullYear()
     let startMonth = new Date(item.startJobDate).getMonth()
@@ -78,7 +83,7 @@ function CalendarPageCustomer() {
 
     return arr
 
-  })
+  }) 
 
   
 console.log(newarr)

@@ -45,6 +45,7 @@ function InvoiceDetailsCustomer() {
     const {data} = await axios.get(`http://localhost:6001/myInvoices/${id}`, {withCredentials:true})
     setInvoice(data)
     
+    
   }
   const navigate = useNavigate()
   const goToPdf = () => {

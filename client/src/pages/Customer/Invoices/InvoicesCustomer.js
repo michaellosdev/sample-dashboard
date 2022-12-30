@@ -34,8 +34,12 @@ const [invoices, setInvoices] = useState([])
 
 const fetchInvoices = async () => {
   const {data} = await axios.get('http://localhost:6001/myInvoices', {withCredentials:true})
-
-  setInvoices(data)
+  if (data.lenth) {
+    setInvoices(data)
+  } else {
+    setInvoices([])
+  }
+  
 }
 
 
@@ -112,7 +116,7 @@ console.log(invoices)
                         </div>
                           <Typography variant='caption' sx={{width:'18%', display:'flex', justifyContent:'flex-start', alignItems:'center'}}>{new Date(item.createdAt).toDateString()}</Typography>
                           <Typography variant='caption' sx={{width:'18%', display:'flex', justifyContent:'flex-start', alignItems:'center'}}>{new Date(item.dueDate).toDateString()}</Typography>
-                          <Typography variant='caption' sx={{width:'20%', display:'flex', justifyContent:'flex-start', alignItems:'center'}}>{`$ ${item.totalPrice.toFixed(2)}`}</Typography>
+                          <Typography variant='caption' sx={{width:'20%', display:'flex', justifyContent:'flex-start', alignItems:'center'}}>{`$ ${item?.totalPrice?.toFixed(2)}`}</Typography>
                         <div style={{width:'20%', display:'flex', justifyContent:'flex-start', alignItems:'center'}}> 
                           {item.status === 'paid' ? <TagGreenText value='paid' /> : item.status === 'unpaid' ? <TagYellowText value='unpaid' /> : item.status === 'overdue' ? <TagRedText value='overdue' /> : item.status === 'grey' ? <TagGreyText value='draft' /> : null }
                         </div>

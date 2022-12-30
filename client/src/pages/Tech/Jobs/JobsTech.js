@@ -31,7 +31,11 @@ function JobsTech() {
 
     const fetchJobs = async() => {
         const {data} = await axios.get('http://localhost:6001/myJobs', {withCredentials: true})
-        setJobs(data)
+        if (data.lenth) {
+          setJobs(data)
+        } else {
+          setJobs([])
+        }
     }
 
     useEffect(()=>{

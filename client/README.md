@@ -32,6 +32,24 @@ FEATURES:
 Acces based on the role: 
 
     Business have acces to every part of the application such as: 
-        Calendar and All jobs in progress
-        Creation of jobs
+        HOME
+            Calendar and All jobs in progress
+            Creation of jobs
+        INVOICES
+            View invoices and estimates
+            View total, paid, unpaid, overdue, drat invoices
+            Create invoices and estimates
+                -dinamically add fields in invoices
+                -Assign customers
+        CRM
+            Create customers
+            View, Eddit, Delete, Update
+        INVERTORY
+            Add items with pictures
+        EMPLOYEES 
+            Create customers
+            View, Eddit, Delete, Update
+
+
+
 
