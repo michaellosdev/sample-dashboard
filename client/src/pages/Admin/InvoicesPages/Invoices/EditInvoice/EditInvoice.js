@@ -38,18 +38,18 @@ function EditInvoice() {
       };
 
     const fetchExistingInvoice = async() => {
-        const {data} = await axios.get(`http://localhost:6001/invoices/myInvoices/${id}`,{withCredentials:true})
+        const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/invoices/myInvoices/${id}`,{withCredentials:true})
 
         return data
     }
     
     const fetchItems = async() => {
-        const {data} = await axios.get(`http://localhost:6001/items`, {withCredentials:true})
+        const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/items`, {withCredentials:true})
         setItems(data)
     }
     
     const fetchCustomers = async() => {
-        const {data} = await axios.get('http://localhost:6001/customers', {withCredentials:true})
+        const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/customers`, {withCredentials:true})
         setCustomers(data)
     } 
     
@@ -164,7 +164,7 @@ function EditInvoice() {
 
     const handleDelete = async() => {
         const deleteInvoice = await axios
-            .delete(`http://localhost:6001/invoices/myInvoices/${id}`,
+            .delete(`${process.env.REACT_APP_DEPLOY_URL}/invoices/myInvoices/${id}`,
                     {withCredentials: true})
             .then(history(-2))
 
@@ -176,7 +176,7 @@ function EditInvoice() {
         setLoading(true)
         console.log(invoice)
         const postInvoice = await axios
-            .patch(`http://localhost:6001/invoices/myInvoices/${id}`, {
+            .patch(`${process.env.REACT_APP_DEPLOY_URL}/invoices/myInvoices/${id}`, {
                 items: invoice.items,
                 createdAt: createDateValue,
                 dueDate: dueDateValue,

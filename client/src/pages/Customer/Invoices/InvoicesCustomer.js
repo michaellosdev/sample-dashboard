@@ -33,7 +33,7 @@ function InvoicesCustomer() {
 const [invoices, setInvoices] = useState([])
 
 const fetchInvoices = async () => {
-  const {data} = await axios.get('http://localhost:6001/myInvoices', {withCredentials:true})
+  const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/myInvoices`, {withCredentials:true})
   if (data.lenth) {
     setInvoices(data)
   } else {

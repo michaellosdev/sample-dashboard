@@ -45,11 +45,11 @@ function CreateJob() {
     }
 
     const fetchEmployees = async () => {
-        const {data} =  await axios.get('http://localhost:6001/employees/', {withCredentials: true})
+        const {data} =  await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/employees/`, {withCredentials: true})
         setEmployees(data)
     }
     const fetchInvocies = async () => {
-        const {data} = await axios.get('http://localhost:6001/invoices/', {withCredentials: true})
+        const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/invoices/`, {withCredentials: true})
         setInvoices(data)
     }
     
@@ -64,7 +64,7 @@ function CreateJob() {
         setLoading(true)
         
         const postJob = await axios
-                .post('http://localhost:6001/jobs', {
+                .post(`${process.env.REACT_APP_DEPLOY_URL}/jobs`, {
                     startJobDate: startJobDate,
                     endJobDate: endJobDate,
                     notes: note,

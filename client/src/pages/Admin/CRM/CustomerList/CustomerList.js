@@ -22,7 +22,7 @@ function CustomerList() {
 
 const fetchCustomers = async () => {
     setLoading(true)
-    const {data} = await axios.get('http://localhost:6001/customers', {withCredentials:true})
+    const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/customers`, {withCredentials:true})
   
     setDbCustomers(data)
     setLoading(false)

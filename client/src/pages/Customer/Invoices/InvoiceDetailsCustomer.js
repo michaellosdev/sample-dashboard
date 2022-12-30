@@ -42,7 +42,7 @@ function InvoiceDetailsCustomer() {
   //get invoice details 
   
   const fetchInvoice = async()=> {
-    const {data} = await axios.get(`http://localhost:6001/myInvoices/${id}`, {withCredentials:true})
+    const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/myInvoices/${id}`, {withCredentials:true})
     setInvoice(data)
     
     

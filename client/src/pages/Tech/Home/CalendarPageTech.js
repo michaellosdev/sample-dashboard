@@ -1,12 +1,11 @@
-import React, {useState, Fragment, useMemo, useEffect} from 'react'
-import { Card, Typography } from '@mui/material'
+import React, {useState,  useMemo, useEffect} from 'react'
+import { Card,  } from '@mui/material'
 import { Calendar, momentLocalizer, Views } from 'react-big-calendar'
-import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 import moment from 'moment'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import * as dates from '../../../utils/dates'
 import axios from 'axios'
-import { BlueColor_100, GreenColor_100 } from '../../../styles/_variables'
+import {  GreenColor_100 } from '../../../styles/_variables'
 
 
 const localizer = momentLocalizer(moment)
@@ -34,7 +33,7 @@ function CalendarPageTech() {
   const [event, setEvent] = useState([])
 
   const fetchJobs = async() => {
-      const {data} = await axios.get(`http://localhost:6001/myJobs`, {withCredentials: true})
+      const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/myJobs`, {withCredentials: true})
       if (data.lenth) {
         setJobs(data)
       } else {

@@ -18,21 +18,21 @@ function JobDetails() {
     
   
     const fetchJob = async () => {
-        const data = await axios.get(`http://localhost:6001/jobs/${id}`, {withCredentials: true})
+        const data = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/jobs/${id}`, {withCredentials: true})
         setJob(data.data)
         console.log(job)
     }
 
     const handleDelete = async() => {
         const deleteInvoice = await axios
-            .delete(`http://localhost:6001/jobs/${id}`,
+            .delete(`${process.env.REACT_APP_DEPLOY_URL}/jobs/${id}`,
                     {withCredentials: true})
             .then(history(-1))
 
     }
     const handleComplete = async() => {
         const deleteInvoice = await axios
-            .patch(`http://localhost:6001/jobs/${id}`,{
+            .patch(`${process.env.REACT_APP_DEPLOY_URL}/jobs/${id}`,{
                     status: 'complete'
             },
                     {withCredentials: true})

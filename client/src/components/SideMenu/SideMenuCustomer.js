@@ -23,7 +23,7 @@ function SideMenuCustomer() {
   const logout = async () =>{
     setLoading(true)
     const res = await axios
-    .post('http://localhost:6001/customers/logout', null, {
+    .post(`${process.env.REACT_APP_DEPLOY_URL}/customers/logout`, null, {
       withCredentials:true
     })
     .then(() => {dispatch(logoutCustomer())

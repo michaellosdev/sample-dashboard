@@ -44,9 +44,9 @@ function CreateItemForm() {
         formData.append("image", imgData);
         
         const postItem = await
-            axios.post( "http://localhost:6001/api/images",formData).then((data) => {
+            axios.post( `${process.env.REACT_APP_DEPLOY_URL}/api/images`,formData).then((data) => {
                 axios
-                .post('http://localhost:6001/items', {
+                .post(`${process.env.REACT_APP_DEPLOY_URL}/items`, {
                     itemName: inputFields.itemName,
                     itemType: inputFields.itemType,
                     cost: Number(inputFields.cost),

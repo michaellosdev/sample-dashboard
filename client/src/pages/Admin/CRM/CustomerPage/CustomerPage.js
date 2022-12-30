@@ -25,13 +25,13 @@ function CustomerPage() {
     
 
     const fetchCustomer = async()=> {
-      const data = await axios.get(`http://localhost:6001/customers/${id}`, {withCredentials:true})
+      const data = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/customers/${id}`, {withCredentials:true})
       setCustomerDetails(data.data)
 
     }
 
     const fetchInvoices = async () => {
-        const {data} = await axios.get('http://localhost:6001/invoices', {withCredentials:true})
+        const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/invoices`, {withCredentials:true})
         data.map(inv => {
             if (inv?.customer?._id == id){
                setInvoices(current => [...current, inv])
@@ -60,7 +60,7 @@ function CustomerPage() {
 
    const flagCustomer = async() => {
     await axios
-    .patch(`http://localhost:6001/customers/flagged/${id}`, {
+    .patch(`${process.env.REACT_APP_DEPLOY_URL}/customers/flagged/${id}`, {
         flagged:true
     },{withCredentials:true})
    }

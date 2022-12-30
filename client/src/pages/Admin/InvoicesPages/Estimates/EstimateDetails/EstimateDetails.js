@@ -41,7 +41,7 @@ function EstimateDetails() {
   //get invoice details 
   
   const fetchInvoice = async()=> {
-    const {data} = await axios.get(`http://localhost:6001/estimates/myEstimates/${id}`, {withCredentials:true})
+    const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/estimates/myEstimates/${id}`, {withCredentials:true})
     setInvoice(data)
     
   }
@@ -68,7 +68,7 @@ function EstimateDetails() {
    const handleClose = () => setOpen(false);
 
    const handleSetPaid = async () => {
-    await axios.patch(`http://localhost:6001/estimates/myEstimates/${id}`, {
+    await axios.patch(`${process.env.REACT_APP_DEPLOY_URL}/estimates/myEstimates/${id}`, {
       status: 'signed'
     },{withCredentials:true})
     setPaid(invoice.status ='signed')

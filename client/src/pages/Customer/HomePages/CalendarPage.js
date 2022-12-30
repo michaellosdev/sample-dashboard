@@ -34,7 +34,7 @@ function CalendarPageCustomer() {
   const [event, setEvent] = useState([])
 
   const fetchJobs = async() => {
-      const {data} = await axios.get(`http://localhost:6001/myJobs`, {withCredentials: true})
+      const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/myJobs`, {withCredentials: true})
       if (data.lenth) {
         setJobs(data)
       } else {

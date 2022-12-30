@@ -37,7 +37,7 @@ function HomePageInvoices() {
   
   const fetchInvoices = async () => {
     setLoading(true)
-    const {data} = await axios.get('http://localhost:6001/invoices', {withCredentials:true})
+    const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/invoices`, {withCredentials:true})
     
     setInvoices(data)
     setLoading(false)
@@ -45,7 +45,7 @@ function HomePageInvoices() {
   const [estimates, setEstimates] = useState([])
   
   const fetchEstimates = async () => {
-    const {data} = await axios.get('http://localhost:6001/estimates', {withCredentials:true})
+    const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/estimates`, {withCredentials:true})
     
     setEstimates(data)
   }

@@ -54,6 +54,8 @@ import JobDetailsTech from './pages/Tech/Jobs/JobDetailsTech';
 import InvoicePdfTech from './pages/Tech/Jobs/InvoicePdfTech';
 
 
+console.log(process.env.DEPLOY_URL)
+
 
 function App() {
   const history = useNavigate()

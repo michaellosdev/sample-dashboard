@@ -21,7 +21,7 @@ function EditCustomer() {
       };
     
     const fetchCustomer = async()=> {
-        await axios.get(`http://localhost:6001/customers/${id}`, {withCredentials:true}).then(data=>{
+        await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/customers/${id}`, {withCredentials:true}).then(data=>{
             
             setGetCustomer(data.data)
         } )
@@ -165,7 +165,7 @@ function EditCustomer() {
         let response = window.confirm('Are you sure you want to delete customer?')
         if(response) {
             return  await axios
-            .delete(`http://localhost:6001/customers/${id}`, {withCredentials: true})
+            .delete(`${process.env.REACT_APP_DEPLOY_URL}/customers/${id}`, {withCredentials: true})
             .then(data => console.log(data.response)).then(setLoading(false))
             .then(history(-2))
         }
@@ -176,7 +176,7 @@ function EditCustomer() {
         setLoading(true)
         
         const postCustomer = await axios
-            .patch(`http://localhost:6001/customers/${id}`, {
+            .patch(`${process.env.REACT_APP_DEPLOY_URL}/customers/${id}`, {
                 firstName: inputFields.firstName,
                 lastName: inputFields.lastName,
                 primaryPhoneNumber: inputFields.primaryPhoneNumber,

@@ -64,7 +64,7 @@ function CreateCustomerForm() {
         setLoading(true)
         
         const postCustomer = await axios
-            .post('http://localhost:6001/employees', {
+            .post(`${process.env.REACT_APP_DEPLOY_URL}/employees`, {
                 firstName: inputFields.firstName,
                 lastName: inputFields.lastName,
                 primaryPhoneNumber: inputFields.primaryPhoneNumber,

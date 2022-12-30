@@ -1,16 +1,12 @@
 import React, {useEffect, useState}from 'react'
-import {Box, Container, Typography, Card, Tabs, Tab, AppBar, Button, TextField, Divider, Avatar} from '@mui/material'
-import { BoxStyles, ContainerStyles } from '../../BoxStyles';
+import {Box, Container, Typography, Card, Tabs, Tab, TextField, Divider} from '@mui/material'
+import { BoxStyles} from '../../BoxStyles';
 import { Add } from '@mui/icons-material';
 import { Link, useNavigate,generatePath } from 'react-router-dom';
-import { TextColor_100,  BlackColor_100, BlueColor_25, BlackColor_75, BlueColor_100, BlueColor_50, BlackColor_25 } from '../../../styles/_variables';
+import { TextColor_100, BlueColor_25, BlackColor_75, BlueColor_100, BlueColor_50 } from '../../../styles/_variables';
 import ButtonFilled from '../../../components/Buttons/ButtonFilled';
 import TagGreen from '../../../components/Tags/NumTags/TagGreen';
 import TagYellow from '../../../components/Tags/NumTags/TagYellow';
-import TagRedText from '../../../components/Tags/TextTags/TagRedText';
-import TagGreenText from '../../../components/Tags/TextTags/TagGreenText'
-import TagYellowText from '../../../components/Tags/TextTags/TagYellowText';
-import TagRed from '../../../components/Tags/NumTags/TagRed';
 import axios from 'axios';
 
 
@@ -30,7 +26,7 @@ function JobsTech() {
     const [jobs, setJobs] = useState([])
 
     const fetchJobs = async() => {
-        const {data} = await axios.get('http://localhost:6001/myJobs', {withCredentials: true})
+        const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/myJobs`, {withCredentials: true})
         if (data.lenth) {
           setJobs(data)
         } else {

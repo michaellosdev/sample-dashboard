@@ -30,7 +30,7 @@ function Jobs() {
     const [jobs, setJobs] = useState([])
 
     const fetchJobs = async() => {
-        const {data} = await axios.get('http://localhost:6001/jobs', {withCredentials: true})
+        const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/jobs`, {withCredentials: true})
         setJobs(data)
     }
 

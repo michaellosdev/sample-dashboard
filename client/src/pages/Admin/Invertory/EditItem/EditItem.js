@@ -14,7 +14,7 @@ function EditItem() {
     const [itemDetails, setItemDetails] = useState({})
 
     const fetchItem = async()=> {
-        await axios.get(`http://localhost:6001/items/${id}`, {withCredentials:true}).then(data=>{
+        await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/items/${id}`, {withCredentials:true}).then(data=>{
             
             setItemDetails(data.data)
         } )
@@ -67,7 +67,7 @@ function EditItem() {
     let response = window.confirm('Are you sure you want to delete item?')
     if(response) {
         return  await axios
-        .delete(`http://localhost:6001/items/${id}`, {withCredentials: true})
+        .delete(`${process.env.REACT_APP_DEPLOY_URL}/items/${id}`, {withCredentials: true})
         .then(data => console.log(data.response)).then(setLoading(false))
         .then(history(-1))
     } else {
@@ -85,9 +85,9 @@ function EditItem() {
         formData.append("image", imgData);
         
         const postItem = await
-            axios.post( `http://localhost:6001/api/images/`,formData).then((data) => {
+            axios.post( `${process.env.REACT_APP_DEPLOY_URL}/api/images/`,formData).then((data) => {
                 axios
-                .patch(`http://localhost:6001/items/${id}`, {
+                .patch(`${process.env.REACT_APP_DEPLOY_URL}/items/${id}`, {
                     itemName: inputFields.itemName,
                     itemType: inputFields.itemType,
                     cost: Number(inputFields.cost),

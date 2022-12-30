@@ -17,7 +17,7 @@ function JobDetailsTech() {
     
   
     const fetchJob = async () => {
-        const data = await axios.get(`http://localhost:6001/jobs/${id}`, {withCredentials: true})
+        const data = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/jobs/${id}`, {withCredentials: true})
         setJob(data.data)
         console.log(job)
     }

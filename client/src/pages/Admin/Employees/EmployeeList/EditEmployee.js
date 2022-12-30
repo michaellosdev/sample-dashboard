@@ -16,7 +16,7 @@ function EditEmployee() {
     const [getCustomer, setGetCustomer] = useState({})
     
     const fetchCustomer = async()=> {
-        await axios.get(`http://localhost:6001/employees/${id}`, {withCredentials:true}).then(data=>{
+        await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/employees/${id}`, {withCredentials:true}).then(data=>{
             
             setGetCustomer(data.data)
         } )
@@ -134,7 +134,7 @@ function EditEmployee() {
         let response = window.confirm('Are you sure you want to delete customer?')
         if(response) {
             return  await axios
-            .delete(`http://localhost:6001/employees/${id}`, {withCredentials: true})
+            .delete(`${process.env.REACT_APP_DEPLOY_URL}/employees/${id}`, {withCredentials: true})
             .then(data => console.log(data.response)).then(setLoading(false))
             .then(history(-2))
         }
@@ -145,7 +145,7 @@ function EditEmployee() {
         setLoading(true)
         
         const postCustomer = await axios
-            .patch(`http://localhost:6001/employees/${id}`, {
+            .patch(`${process.env.REACT_APP_DEPLOY_URL}/employees/${id}`, {
                 firstName: inputFields.firstName,
                 lastName: inputFields.lastName,
                 primaryPhoneNumber: inputFields.primaryPhoneNumber,

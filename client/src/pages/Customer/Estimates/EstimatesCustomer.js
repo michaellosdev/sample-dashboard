@@ -34,7 +34,7 @@ function EstimatesCustomer() {
 const [invoices, setInvoices] = useState([])
 
 const fetchInvoices = async () => {
-  const {data} = await axios.get('http://localhost:6001/estimates/myEstimates', {withCredentials:true})
+  const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/estimates/myEstimates`, {withCredentials:true})
 
   setInvoices(data)
 }

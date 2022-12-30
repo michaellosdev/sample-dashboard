@@ -38,7 +38,7 @@ const [invoices, setInvoices] = useState([])
 
 const fetchInvoices = async () => {
   setLoading(true)
-  const {data} = await axios.get('http://localhost:6001/invoices', {withCredentials:true})
+  const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/invoices`, {withCredentials:true})
 
   setInvoices(data)
   setLoading(false)

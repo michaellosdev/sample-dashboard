@@ -35,13 +35,13 @@ function CreateEstimateForm() {
       };;
     
     const fetchItems = async() => {
-        const {data} = await axios.get('http://localhost:6001/items', {withCredentials:true})
+        const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/items`, {withCredentials:true})
         setItems(data)
         
     }
     
     const fetchCustomers = async() => {
-        const {data} = await axios.get('http://localhost:6001/customers', {withCredentials:true})
+        const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/customers`, {withCredentials:true})
         setCustomers(data)
     } 
     
@@ -152,7 +152,7 @@ function CreateEstimateForm() {
         setLoading(true)
         console.log(invoice)
         const postInvoice = await axios
-            .post('http://localhost:6001/estimates', {
+            .post(`${process.env.REACT_APP_DEPLOY_URL}/estimates`, {
                 items: invoice.items,
                 createdAt: createDateValue,
                 dueDate: dueDateValue,

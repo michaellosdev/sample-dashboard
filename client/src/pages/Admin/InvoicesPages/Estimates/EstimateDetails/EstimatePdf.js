@@ -13,7 +13,7 @@ const {id} = useParams()
   //get invoice details 
   
   const fetchInvoice = async()=> {
-    const {data} = await axios.get(`http://localhost:6001/estimates/myEstimates/${id}`, {withCredentials:true})
+    const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/estimates/myEstimates/${id}`, {withCredentials:true})
     setInvoice(data)
   }
 

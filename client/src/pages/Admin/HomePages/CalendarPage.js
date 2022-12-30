@@ -8,33 +8,33 @@ import * as dates from '../../../utils/dates'
 import axios from 'axios'
 import { BlueColor_100, GreenColor_100 } from '../../../styles/_variables'
 
-
 const localizer = momentLocalizer(moment)
 
 // const event =  [{
-//   // id: 0,
-//   // title: 'All Day Event very long title',
-//   // allDay: true,
-//   // start: Date.now(),
-//   // end: new Date(2022, 12, 5),
-//   // color: GreenColor_100
-// }]
-
-const ColoredDateCellWrapper = ({ children }) =>
+  //   // id: 0,
+  //   // title: 'All Day Event very long title',
+  //   // allDay: true,
+  //   // start: Date.now(),
+  //   // end: new Date(2022, 12, 5),
+  //   // color: GreenColor_100
+  // }]
+  
+  const ColoredDateCellWrapper = ({ children }) =>
   React.cloneElement(React.Children.only(children), {
     style: {
       backgroundColor:GreenColor_100,
     },
   })
-
-
-function CalendarPage() {
-
-  const [jobs, setJobs] = useState([])
-  const [event, setEvent] = useState([])
+  
+  
+  function CalendarPage() {
+    
+    console.log(process.env.REACT_APP_DEPLOY_URL)
+    const [jobs, setJobs] = useState([])
+    const [event, setEvent] = useState([])
 
   const fetchJobs = async() => {
-      const {data} = await axios.get(`http://localhost:6001/jobs`, {withCredentials: true})
+      const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/jobs`, {withCredentials: true})
       setJobs(data)
       setEvent(data)
   }

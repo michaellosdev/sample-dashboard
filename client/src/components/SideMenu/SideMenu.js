@@ -21,7 +21,7 @@ function SideMenu() {
 
   const logout = async () =>{
     const res = await axios
-    .post('http://localhost:6001/employees/logout', null, {
+    .post(`${process.env.REACT_APP_DEPLOY_URL}/employees/logout`, null, {
       withCredentials:true
     })
     .then(() => {dispatch(logoutEmployee())

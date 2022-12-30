@@ -29,7 +29,7 @@ function AdminLogin() {
   const sendRequest = async () => {
     
     const res = await axios
-      .post('http://localhost:6001/employees/login', 
+      .post(`${process.env.REACT_APP_DEPLOY_URL}/employees/login`, 
       {
         email: inputs.email,
         password: inputs.password
