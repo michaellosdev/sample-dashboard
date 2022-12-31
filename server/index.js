@@ -21,7 +21,7 @@ const app = express()
 
 connectDB()
 app.use(logger)
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(function (req, res, next) {	
     res.setHeader('Access-Control-Allow-Origin', 'https://sampledash.onrender.com');    
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');    
