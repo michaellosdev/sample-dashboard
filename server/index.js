@@ -20,9 +20,7 @@ const app = express()
 //middleware 
 
 connectDB()
-const server = require('http').createServer(app)
 app.use(logger)
-app.use(cookieParser())
 app.use(cors(corsOptions))
 app.use(function (req, res, next) {	
     res.setHeader('Access-Control-Allow-Origin', 'https://sampledash.onrender.com');    
@@ -32,8 +30,7 @@ app.use(function (req, res, next) {
     next();
 });
 app.use(express.json())
-
-app.use(cookieParser())
+app.use(cookieParser())     
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -42,10 +39,7 @@ app.set("view engine", "ejs");
 
 // routing
 
-app.use('/*', express.static(path.join(__dirname, 'public')))
-
-app.use('/', require('./routes/root'))
-
+app.use('/', express.static(path.join(__dirname, 'public')))
 
 app.use('/users', require('./routes/userRoutes'))
 app.use('/employees', require('./routes/employeeRoutes'))
@@ -72,14 +66,6 @@ app.all('*', (req, res) => {
     }
 })
 
-app.use(errorHandler)
-
-const socketio = require('socket.io')(server, {
-    cors: {
-        origin: 'http://localhost:3000',
-        methods: ['GET', 'POST']
-      }
-})
 mongoose.connection.once('open', ()=>{
     console.log('Connected to DB')
     app.listen(PORT, ()=> console.log(`Server is running on port ${PORT}`))
