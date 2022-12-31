@@ -40,6 +40,9 @@ app.set("view engine", "ejs");
 // routing
 
 app.use(express.static(path.join(__dirname, 'public')))
+app.get('/*', (req, res, next) => {
+    res.sendFile(path.join(__dirname + '/public/index.html'))
+})
 
 app.use('/employees', require('./routes/employeeRoutes'))
 app.use('/customers', require('./routes/customerRoutes'))
@@ -53,6 +56,7 @@ app.use('/myJobs', require('./routes/myJobsRoutes'))
 app.use('/api', require('./routes/imgUploadRouter'))
 
 //404 page
+
 
 app.all('*', (req, res) => {
     res.status(404)
