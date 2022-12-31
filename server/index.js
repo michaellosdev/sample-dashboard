@@ -2,17 +2,17 @@ require('dotenv').config()
 const mongoose = require('mongoose')
 const fs = require('fs');
 const express = require('express')
-const multer = require('multer');
+// const multer = require('multer');
 const bodyParser = require('body-parser')
 const path = require('path')
 const {logger} = require('./middleware/logger')
-const errorHandler = require('./middleware/errorHandler')
+// const errorHandler = require('./middleware/errorHandler')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const corsOptions = require('./config/corsOptions')
 const connectDB = require('./config/dbConn')
 const {logEvents} = require('./middleware/logger')
-const Message = require('./models/Message')
+// const Message = require('./models/Message')
 const PORT = process.env.PORT || 6001
 
 const app = express()
@@ -21,7 +21,7 @@ const app = express()
 
 connectDB()
 app.use(logger)
-app.use(cors(corsOptions))
+app.use(cors())
 app.use(function (req, res, next) {	
     res.setHeader('Access-Control-Allow-Origin', 'https://sampledash.onrender.com');    
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');    
@@ -39,10 +39,11 @@ app.set("view engine", "ejs");
 
 // routing
 
-app.use(express.static(path.join(__dirname, './../client/build')))
-app.get('/*', (req, res, next) => {
-    res.sendFile(path.join(__dirname + './../client/build/index.html'))
+app.use(express.static(path.join(__dirname, '../client/build')))
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname , '../client/build/index.html'))
 })
+
 
 app.use('/employees', require('./routes/employeeRoutes'))
 app.use('/customers', require('./routes/customerRoutes'))
@@ -58,16 +59,16 @@ app.use('/api', require('./routes/imgUploadRouter'))
 //404 page
 
 
-app.all('*', (req, res) => {
-    res.status(404)
-    if (req.accepts('html')) {
-        res.sendFile(path.join(__dirname, 'views', '404.html'))
-    } else if (req.accepts('json')) {
-        res.json({message:'404 Not Found'})
-    } else {
-        res.type('txt').send('404 Not Found')
-    }
-})
+// app.all('/*', (req, res) => {
+//     res.status(404)
+//     if (req.accepts('html')) {
+//         res.sendFile(path.join(__dirname, 'views', '404.html'))
+//     } else if (req.accepts('json')) {
+//         res.json({message:'404 Not Found'})
+//     } else {
+//         res.type('txt').send('404 Not Found')
+//     }
+// })
 
 mongoose.connection.once('open', ()=>{
     console.log('Connected to DB')
@@ -78,3 +79,4 @@ mongoose.connection.on('error', err => {
     console.log(err)
     logEvents(`${err.no}: ${err.code}\t${err.syscall}\t${err.hostname}`, 'mongoErrLog.log')
 })
+
