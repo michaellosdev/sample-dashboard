@@ -73,9 +73,9 @@ function App() {
     <>
       <Routes>
         {/* Welcome page */}  
-        <Route path='/' element={<WelcomePage />} />
+        <Route exact path='/' element={<WelcomePage />} />
         {/* custmer login this line */}
-        <Route path='/login/customer' element={<CustomerLogin />} />
+        <Route exact path='/login/customer' element={<CustomerLogin />} />
         <Route path='/login/employee' element={<AdminLogin />} />
         {/* admin routes */}
         {/* pdf routes */}
