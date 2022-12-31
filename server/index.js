@@ -39,9 +39,8 @@ app.set("view engine", "ejs");
 
 // routing
 
-app.use('/', express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')))
 
-app.use('/users', require('./routes/userRoutes'))
 app.use('/employees', require('./routes/employeeRoutes'))
 app.use('/customers', require('./routes/customerRoutes'))
 app.use('/invoices', require('./routes/invoiceRoutes'))
