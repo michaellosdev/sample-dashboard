@@ -1,4 +1,4 @@
-[Sample dashboard MERN project.
+
 
 Dashboard that allows busines to create and send invoices and estinates to the cutsomer and assign a technician to the project.
 
@@ -28,21 +28,22 @@ CRUD operations
 Acces based on the role:
 
 Business have acces to every part of the application such as: 
-    HOME
+
+   - HOME
         Calendar and All jobs in progress
         Creation of jobs
-    INVOICES
+   - INVOICES
         View invoices and estimates
         View total, paid, unpaid, overdue, drat invoices
         Create invoices and estimates
             -dinamically add fields in invoices
             -Assign customers
-    CRM
+   - CRM
         Create customers
         View, Eddit, Delete, Update
-    INVERTORY
+   - INVERTORY
         Add items with pictures
-    EMPLOYEES 
+   - EMPLOYEES 
         Create customers
         View, Eddit, Delete, Update
-](https://github.com/michaellosdev/sample-dashboard/tree/master)
+
