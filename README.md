@@ -1,4 +1,4 @@
-Sample dashboard MERN project.
+[Sample dashboard MERN project.
 
 Dashboard that allows busines to create and send invoices and estinates to the cutsomer and assign a technician to the project.
 
@@ -45,3 +45,4 @@ Business have acces to every part of the application such as:
     EMPLOYEES 
         Create customers
         View, Eddit, Delete, Update
+](https://github.com/michaellosdev/sample-dashboard/tree/master)
