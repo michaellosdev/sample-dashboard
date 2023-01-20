@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://sampledash.onrender.com",
+  "proxy": "https://localhost:6002",
   "homepage": "./",
   "dependencies": {
     "@azure/msal-browser": "^2.32.1",

@@ -13,7 +13,7 @@ const corsOptions = require('./config/corsOptions')
 const connectDB = require('./config/dbConn')
 const {logEvents} = require('./middleware/logger')
 // const Message = require('./models/Message')
-const PORT = process.env.PORT || 6001
+const PORT = process.env.PORT || 6002
 
 const app = express()
 
@@ -40,7 +40,7 @@ app.set("view engine", "ejs");
 // routing
 
 app.use(express.static(path.join(__dirname, '../client/build')))
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname , '../client/build/index.html'))
 })
 
