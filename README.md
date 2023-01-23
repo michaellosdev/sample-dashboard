@@ -47,3 +47,6 @@ Business have acces to every part of the application such as:
         Create customers
         View, Eddit, Delete, Update
 
+
+
+The complete versiaon still in works. 
