@@ -75,13 +75,13 @@ function App() {
         {/* Welcome page */}  
         <Route path='/' element={<WelcomePage />} />
         {/* custmer login this line */}
-        <Route  path='/login/customer' element={<CustomerLogin />} />
-        <Route path='/login/employee' element={<AdminLogin />} />
+        <Route  path='/#//login/customer' element={<CustomerLogin />} />
+        <Route path='/#//login/employee' element={<AdminLogin />} />
         {/* admin routes */}
         {/* pdf routes */}
 
         {/* customer routes */} 
-        <Route path='customer-dashboard' element={<SideMenuCustomer />}>
+        <Route path='/#/customer-dashboard' element={<SideMenuCustomer />}>
           <Route path='home'>
             <Route index element={<HomeCustomer />} />
           </Route>
@@ -93,13 +93,13 @@ function App() {
           </Route>
         </Route>
 
-        <Route path='employee-dashboard/admin' element={<SideMenu />}>
+        <Route path='/#/employee-dashboard/admin' element={<SideMenu />}>
           <Route path='home'>
             <Route index element={<Home />} />
             <Route path='createJob' element={<CreateJob />} />
             <Route path='jobs/:id' element={<JobDetails />} />
           </Route>
-          <Route path='invoices'>
+          <Route path='/#/invoices'>
             <Route index   element={<InvoicesPages /> }/>
             <Route path=':id' element={<InvoiceDetails />} />
             <Route path='estimate/:id' element={<EstimateDetails />} />
@@ -110,18 +110,18 @@ function App() {
             <Route path=':id/edit-invoice/:id' element={<EditInvoice />} />
             <Route path='estimate/:id/edit-estimate/:id' element={<EditEstimate />} />
           </Route>
-          <Route path='crm'>
+          <Route path='/#/crm'>
             <Route index   element={<CRM/> }/>
             <Route  exact path=':id' element={<CustomerPage />} />
             <Route path=':id/edit-customer/:id' element={<EditCustomer />} />
             <Route path='create-customer' element={<CreateCustomer />} />
           </Route>
-          <Route path='invertory'>
+          <Route path='/#/invertory'>
             <Route index  element={<Invertory/>} />
             <Route path='edit-item/:id' element={<EditItem />} />
             <Route path='create-item' element={<CreateItem />} />
           </Route>
-          <Route path='employees'>
+          <Route path='/#/employees'>
             <Route index   element={<Employees/> }/>
             <Route  exact path=':id' element={<EmployeeDetails />} />
             <Route path=':id/edit-employee/:id' element={<EditEmployee />} />
@@ -131,11 +131,11 @@ function App() {
         
 
         {/* tech routes */}
-        <Route path='employee-dashboard/tech' element={<SideMenuTech />}>
+        <Route path='/#/employee-dashboard/tech' element={<SideMenuTech />}>
           <Route path='home'>
             <Route index element={<HomeTech/>} />
           </Route>
-          <Route path='jobs'>
+          <Route path='/#/jobs'>
             <Route index element={<HomeTechJobs/>} />
             <Route  exact path='job-details/:id' element={<JobDetailsTech />} />
             <Route  exact path='job-details/:id/item-list/:invID' element={<InvoicePdfTech />} />
