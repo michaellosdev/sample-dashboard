@@ -20,14 +20,14 @@ function Jobs() {
 
     const [id, setId] = useState()
 
-    const navigate = useNavigate()
-  
-    const handleProceed = (e) => {
-      id && navigate(generatePath("jobs/:id", {id}))
-    }
+    const navigate = useNavigate() 
+    const handleProceed = (e, id) => {
+    id && navigate(generatePath("jobs/:id", {id}))
+  }
 
     const [selectedTab, setSelectedTab] = useState(0)
     const [jobs, setJobs] = useState([])
+    const [searchValue, setSearchValue] = useState('')
 
     const fetchJobs = async() => {
         const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/jobs`, {withCredentials: true})
@@ -38,12 +38,18 @@ function Jobs() {
         fetchJobs()
     }, [])
 
+    const onSearch = (e) => {
+      setSearchValue(e.target.value)
+    }
+
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue)
   }
 
-  let completedJobsLength = jobs.filter(item => item?.status === 'complete')
-  let inProgressJobsLength = jobs.filter(item => item?.status === 'inProgress')
+  
+
+  let completedJobsLength = jobs.length ? [] : jobs.filter(item => item?.status === 'complete')
+  let inProgressJobsLength = jobs.length ? [] : jobs.filter(item => item?.status === 'inProgress')
 
   return (
     <Container > 
@@ -77,12 +83,23 @@ function Jobs() {
                     <Typography variant='body1' sx={{width:'20%'}}>Status</Typography>
                   </div>
                   <div></div>
-                            <TextField fullWidth></TextField>
+                            <TextField 
+                            fullWidth
+                            placeholder='Search Jobs'
+                            onChange={e => onSearch(e)}
+                            ></TextField>
                             <div >
-                                {jobs.slice(0).reverse().map((item, index) => (
+                                {jobs.slice(0).reverse().filter(item => {
+                                  if (!searchValue) return true
+                                  if ((item.customer?.firstName.toLowerCase().includes(searchValue.toLowerCase()) || item.customer?.lastName.toLowerCase().includes(searchValue.toLowerCase()))|| (item.employee?.firstName.toLowerCase().includes(searchValue.toLowerCase()) || item.employee?.lastName.toLowerCase().includes(searchValue.toLowerCase()))) {
+                                    return true
+                                  } 
+                                  return false
+                                })
+                                .map((item, index) => (
                                    <>
                                    <div style={{display:'flex', justifyContent:'space-between', height:'60px', cursor:'pointer'}}  onClick={(e) => {
-                                     setId(item._id); handleProceed(e)
+                                     handleProceed(e, item._id)
                                    }}> 
                            
                                     
@@ -90,9 +107,10 @@ function Jobs() {
                                        <Typography variant='subtitle2'>{item.employee?.firstName} {item.employee?.lastName}</Typography>
                                      </div>
                                        <Typography variant='subtitle2' sx={{width:'15%', display:'flex', justifyContent:'flex-start', alignItems:'center'}}>{item.customer?.firstName} {item.customer?.lastName}</Typography>
-                                       <Typography variant='caption' sx={{width:'15%', display:'flex', justifyContent:'flex-start', alignItems:'center'}}>{new Date(item?.jobDate).toDateString()}</Typography>
+                                       <Typography variant='caption' sx={{width:'15%', display:'flex', justifyContent:'flex-start', alignItems:'center'}}>{new Date(item?.startJobDate).toDateString()}</Typography>
                                        <Typography variant='caption' sx={{width:'30%', display:'flex', justifyContent:'flex-start', alignItems:'center'}}>{item.customer?.street},{item.customer?.unit}, {item.customer?.city}</Typography>
-                                       <Typography variant='caption' sx={{width:'20%', display:'flex', justifyContent:'flex-start', alignItems:'center'}}>{new Date(item?.jobDate).toDateString()}</Typography>
+                                       <Typography variant='caption' sx={{width:'20%', display:'flex', justifyContent:'flex-start', alignItems:'center'}}>{item.status === 'inProgress' ? <TagYellowText value='in progreess' /> : <TagGreenText value='completed' />}</Typography>
+                                       
                                    </div>
                                    <Divider />
                

@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://localhost:6002",
+  "proxy": "http://127.0.0.1:6002/",
   "homepage": "./",
   "dependencies": {
     "@azure/msal-browser": "^2.32.1",

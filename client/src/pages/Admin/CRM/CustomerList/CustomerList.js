@@ -23,7 +23,7 @@ function CustomerList() {
 const fetchCustomers = async () => {
     setLoading(true)
     const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/customers`, {withCredentials:true})
-  
+    console.log(data)
     setDbCustomers(data)
     setLoading(false)
   }
@@ -40,7 +40,7 @@ const [selectedTab, setSelectedTab] = useState(0)
     setSelectedTab(newValue)
   }
 
-  let flaggedCustomers = dbCustomers.filter(item => item.flagged === true)
+  let flaggedCustomers = !dbCustomers.length ? [] : dbCustomers.filter(item => item.flagged === true)
 
 
   const navigate = useNavigate()

@@ -2,7 +2,7 @@ import React, {useRef, useState, useEffect} from 'react'
 import SideMenu from '../../../../../components/SideMenu/SideMenu'
 import InvoicesData from '../InvoicesData.json'
 import {ContainerStyles, BoxStyles} from '../../../../BoxStyles'
-import { Container, Box, Button, Breadcrumbs, Typography, Card, Accordion, AccordionSummary, AccordionDetails, Modal, TextField } from '@mui/material'
+import { Container, Box, Button, Breadcrumbs, Typography, Card, Accordion, AccordionSummary, AccordionDetails, Modal, TextField, LinearProgress } from '@mui/material'
 import { ExpandMore } from '@mui/icons-material'
 import {
     BrowserRouter as Router,
@@ -15,7 +15,7 @@ import {
     Link,
     useLocation
   } from "react-router-dom";
-  import {BlueColor_50} from '../../../../../styles/_variables'
+  import {BlueColor_50, TextColor_100, BlackColor_100} from '../../../../../styles/_variables'
   import Logo from '../../../../../assets/onboardittech_logo.png'
   import TagGreenText from '../../../../../components/Tags/TextTags/TagGreenText'
   import TagRedText from '../../../../../components/Tags/TextTags/TagRedText'
@@ -38,12 +38,16 @@ function InvoiceDetails() {
   
   const {id} = useParams()
   const [invoice, setInvoice] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [imgData, setImgData] = useState("")
+
+  
   
   
   //get invoice details 
   
   const fetchInvoice = async()=> {
-    const {data} = await axios.get(`http://localhost:6001/invoices/myInvoices/${id}`, {withCredentials:true})
+    const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/invoices/myInvoices/${id}`, {withCredentials:true})
     setInvoice(data)
     
   }
@@ -70,11 +74,29 @@ function InvoiceDetails() {
    const handleClose = () => setOpen(false);
 
    const handleSetPaid = async () => {
-    await axios.patch(`http://localhost:6001/invoices/myInvoices/${id}`, {
+    await axios.patch(`${process.env.REACT_APP_DEPLOY_URL}/invoices/myInvoices/${id}`, {
       status: 'paid'
     },{withCredentials:true})
     setPaid(invoice.status ='paid')
    }
+
+
+
+const addBlueprint = async (e) => {
+  e.preventDefault()
+  setLoading(true)
+  const formData = new FormData();
+  formData.append("image", e.target.files[0]);
+
+  const addImg = await axios
+   .post(`${process.env.REACT_APP_DEPLOY_URL}/api/images`,formData)
+   .then((data) => axios
+   .patch(`${process.env.REACT_APP_DEPLOY_URL}/invoices/myInvoices/${id}`,
+   {
+     blueprint: data.data
+   },{withCredentials:true})).then(setLoading(false))
+}
+
 
   
 
@@ -85,7 +107,6 @@ function InvoiceDetails() {
   //  const invoice = InvoicesData.invoices.fi(item => item.id === id)
   return (
     <>
-    <SideMenu />
     <Container sx={ContainerStyles}>
         <Box sx={BoxStyles}>
         <div style={{width:'100%', display:'flex', justifyContent:'space-between'}}>
@@ -93,15 +114,15 @@ function InvoiceDetails() {
           <Button onClick={handleSetPaid}>MARK AS PAID</Button>
         </div> 
         <Breadcrumbs sx={{marginBottom:'10px'}}>
-            <Link to='/invoices'><Typography sx={{color:BlueColor_50}}>Invoices</Typography></Link>
-            <Typography >{invoice._id}</Typography>
+            <Link to='/employee-dashboard/admin/invoices'><Typography sx={{color:BlueColor_50}}>Invoices</Typography></Link>
+            <Typography >INV-{invoice.invoice}</Typography>
         </Breadcrumbs>
-            <Card elevation='10'sx={{height:'fit-content', borderRadius:'10px', padding:'10px 40px 10px 40px'}}>
+            <Card elevation='10'sx={{height:'fit-content', borderRadius:'10px', padding:'10px 40px 10px 40px', marginBottom:'25px'}}>
               <div style={{width:'100%', display:'flex', justifyContent:'space-between'}}>
                 <img src={Logo} style={{width:'150px'}} />
-                <div style={{marginTop:'20px'}}>  
+                <div style={{marginTop:'20px', display:'flex', flexDirection:'column', alignItems:'flex-end'}}>  
                   {invoice.status === 'paid' ? <TagGreenText value={invoice.status} /> : invoice.status === 'unpaid' ? <TagYellowText value={invoice.status} /> : invoice.status === 'overdue' ? <TagRedText value={invoice.status} /> : invoice.status === 'draft' ? <TagGreyText value={invoice.status} /> : '' }
-                  <Typography variant='h5'>{invoice._id}</Typography>
+                  <Typography variant='h5'>INV-{invoice.invoice}</Typography>
                 </div>
               </div>
               <div style={{width:'100%', display:'flex', justifyContent:'space-between'}}>
@@ -198,10 +219,30 @@ function InvoiceDetails() {
                   <Button sx={{marginRight:'20px'}}variant='contained' onClick={(e) => {
                     handleOpen()
                   }}>ASSIGN TECh</Button>
-                  <Button variant='contained'>ATTACH A BLUEPRINT</Button>
+                  <Button variant='contained' component='label'>
+                    ATTACH A BLUEPRINT
+                    <input hidden accept="image/" type="file" name='img' onChange={e => addBlueprint(e)}/>
+                   </Button>
                 </div>
               </div>
               
+            </Card>
+
+            <Card 
+            elevation={10}
+            sx={{
+              height:'fit-content',
+              width: '100%',
+              borderRadius:'10px',
+              padding: '20px'
+            }}
+            >
+              <img src={invoice.blueprint} 
+              style={{
+                width: '100%'
+
+              }}
+              />
             </Card>
                
         </Box>
@@ -225,9 +266,11 @@ function InvoiceDetails() {
                   
                 ))} */}
              </Card>
+
           </Box>
         </Container>
       </Modal>
+            {loading ? <LinearProgress sx={{ color:TextColor_100, width:'100%', borderBottomLeftRadius:'10px', position:"fixed"}}/> : null}
     </>
 
   )

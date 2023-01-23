@@ -8,30 +8,30 @@ import * as dates from '../../../utils/dates'
 import axios from 'axios'
 import { BlueColor_100, GreenColor_100 } from '../../../styles/_variables'
 
+
 const localizer = momentLocalizer(moment)
 
 // const event =  [{
-  //   // id: 0,
-  //   // title: 'All Day Event very long title',
-  //   // allDay: true,
-  //   // start: Date.now(),
-  //   // end: new Date(2022, 12, 5),
-  //   // color: GreenColor_100
-  // }]
-  
-  const ColoredDateCellWrapper = ({ children }) =>
+//   // id: 0,
+//   // title: 'All Day Event very long title',
+//   // allDay: true,
+//   // start: Date.now(),
+//   // end: new Date(2022, 12, 5),
+//   // color: GreenColor_100
+// }]
+
+const ColoredDateCellWrapper = ({ children }) =>
   React.cloneElement(React.Children.only(children), {
     style: {
       backgroundColor:GreenColor_100,
     },
   })
-  
-  
-  function CalendarPage() {
-    
-    console.log(process.env.REACT_APP_DEPLOY_URL)
-    const [jobs, setJobs] = useState([])
-    const [event, setEvent] = useState([])
+
+
+function CalendarPage() {
+
+  const [jobs, setJobs] = useState([])
+  const [event, setEvent] = useState([])
 
   const fetchJobs = async() => {
       const {data} = await axios.get(`${process.env.REACT_APP_DEPLOY_URL}/jobs`, {withCredentials: true})
@@ -44,6 +44,7 @@ const localizer = momentLocalizer(moment)
   }, [])
 
 
+  
 
   const newarr = jobs.map(item => {
 
@@ -53,7 +54,7 @@ const localizer = momentLocalizer(moment)
     let startHour = new Date(item.startJobDate).getHours()
     let startMin = new Date(item.startJobDate).getMinutes()
 
-    console.log(startDay)
+    // console.log(startDay)
 
     let endYear = new Date(item.endJobDate).getFullYear()
     let endMonth = new Date(item.endJobDate).getMonth()
@@ -61,8 +62,8 @@ const localizer = momentLocalizer(moment)
     let endHour = new Date(item.endJobDate).getHours()
     let endMin = new Date(item.endJobDate).getMinutes()
 
-    console.log(startYear, startMonth, startDay, startHour, startMin);
-    console.log(endYear, endMonth, endDay);
+    // console.log(startYear, startMonth, startDay, startHour, startMin);
+    // console.log(endYear, endMonth, endDay);
 
     const arr = {
       title: `Customer: ${item?.customer?.firstName} ${item?.customer?.lastName}.
@@ -74,7 +75,7 @@ const localizer = momentLocalizer(moment)
     }
 
 
-    console.log(typeof(arr.start))
+  
     // console.log(new Date(item.startJobTime).getMinutes())
 
     return arr
@@ -82,7 +83,6 @@ const localizer = momentLocalizer(moment)
   })
 
   
-console.log(newarr)
 
 
   const { components, defaultDate, max, views } = useMemo(
@@ -110,7 +110,6 @@ console.log(newarr)
         views={views}
         localizer={localizer}
         events={newarr}
-      
         
         />
     </Card>

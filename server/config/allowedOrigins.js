@@ -1,5 +1,6 @@
 const allowedOrigins = [
-   'https://sampledash.onrender.com'
+   'https://sampledash.onrender.com',
+   'http://localhost:3000'
 
 ]
 

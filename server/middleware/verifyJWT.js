@@ -15,8 +15,18 @@ const verifyJWT = (req, res, next) => {
 
     }
 
+    let count = 0
+
+    for (let i = 0; i < cookies.length; i++) {
+
+      
+      if (cookies.charAt(i) == '=') {
+          count += 1;
+      }
+  }
+
   
-    const token = cookies.split('=')[1]
+    const token = cookies.split('=')[count]
 // const role = req.body.role
     // console.log(token)
 //  if(role !== 'admin') return res.json({message: 'no access'})
